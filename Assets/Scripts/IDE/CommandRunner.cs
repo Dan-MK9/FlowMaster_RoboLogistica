@@ -21,15 +21,15 @@ public class CommandRunner : MonoBehaviour
 
             switch (commandName)
             {
-                case "Block_MoveForward_Inst(Clone)":
+                case "Block_MoveForward_Inst(Copy)":
                     yield return StartCoroutine(robotController.ExecuteCommand("MoveForward"));
                     break;
 
-                case "Block_TurnLeft_Inst(Clone)":
+                case "Block_TurnLeft_Inst(Copy)":
                     yield return StartCoroutine(robotController.ExecuteCommand("TurnLeft"));
                     break;
 
-                case "Block_TurnRight_Inst(Clone)":
+                case "Block_TurnRight_Inst(Copy)":
                     yield return StartCoroutine(robotController.ExecuteCommand("TurnRight"));
                     break;
             }

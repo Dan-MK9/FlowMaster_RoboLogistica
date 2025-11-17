@@ -12,6 +12,8 @@ public class RobotController : MonoBehaviour
     private bool isMoving = false;
     public IEnumerator ExecuteCommand(string command)
     {
+        Debug.Log("Executando: " + command);
+
         if (isMoving) yield break;
         isMoving = true;
         
