@@ -7,7 +7,7 @@ public class RobotController : MonoBehaviour
 {
     public float moveDistance = 1f; //Distancia de movimento por comando
     public float moveSpeed = 2f; //Velocidade do movimento
-    public float turnSpeed = 90f; //Velocidade de rotação (graus por segundo)
+    public float turnSpeed = 180f; //Velocidade de rotação (graus por segundo)
 
     private bool isMoving = false;
     public IEnumerator ExecuteCommand(string command)
@@ -51,18 +51,23 @@ public class RobotController : MonoBehaviour
 
     private IEnumerator Turn(float angle)
     {
-        Quaternion startRot = transform.rotation;
-        Quaternion endRot = startRot * Quaternion.Euler(0, angle, 0);
-        float elapsed = 0f;
+        //====ESSE MÉTODO SERÁ USADO PARA APLICAR GIRO INSTANTANEO====
+        transform.Rotate(0, angle, 0);
+        yield return new WaitForSeconds(0.1f);
 
-        while (elapsed < 1f)
-        {
-            transform.rotation = Quaternion.Lerp(startRot, endRot, elapsed);
-            elapsed += Time.deltaTime * moveSpeed / turnSpeed;
-            yield return null;
-        }
+        //====ESSE MÉTODO PODE SER USADO FUTURAMENTE PARA ADICIONAR ANIMAÇÃO NO GIRO DO ROBO====
+        //Quaternion startRot = transform.rotation;
+        //Quaternion endRot = startRot * Quaternion.Euler(0, angle, 0);
+        //float elapsed = 0f;
 
-        transform.rotation = endRot;
+        //while (elapsed < 1f)
+        //{
+        //    transform.rotation = Quaternion.Lerp(startRot, endRot, elapsed);
+        //    elapsed += Time.deltaTime * moveSpeed / turnSpeed;
+        //    yield return null;
+        //}
+
+        //transform.rotation = endRot;
     }
 
     public IEnumerator TurnLeft()
